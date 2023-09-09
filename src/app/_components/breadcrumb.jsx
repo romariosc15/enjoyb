@@ -10,7 +10,7 @@ export default function Breadcrumb(props) {
         <div className='mb-auto text-sm space-x-2 text-white'>
             {
                 pathArray.map((value, index) => (
-                    <Fragment>
+                    <Fragment key={index}>
                         <Link href={ value.path } className={ isLastArrayValue(index, pathArray) ? 'opacity-75' : ''}>
                             { value.name }
                         </Link>
