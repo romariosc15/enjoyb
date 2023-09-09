@@ -1,6 +1,6 @@
 import Breadcrumb from '@/app/_components/breadcrumb'
 
-export default function JobSearch() {
+export default async function Jobs() {
   const breadcrumbPath = [
     {name: 'Home', path: '/'},
     {name: 'Jobs', path: '/jobs'}
