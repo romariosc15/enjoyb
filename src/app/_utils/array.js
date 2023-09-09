@@ -1,0 +1,1 @@
+export const isLastArrayValue = (currentIndex, myArray) => currentIndex < myArray.length - 1
