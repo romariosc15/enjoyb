@@ -1,4 +1,3 @@
-import { ScreenLoader } from '@/app/_components/screen-loader'
 import Breadcrumb from '@/app/_components/breadcrumb'
 
 export default function JobSearch() {
@@ -8,8 +7,7 @@ export default function JobSearch() {
   ]
   return (
     <main className="">
-      <ScreenLoader />
-      <div className='bg-emerald-800'>
+      <div className='bg-breadcrumb-primary'>
         <div className='container mx-auto'>
           <Breadcrumb path={breadcrumbPath} />
         </div>

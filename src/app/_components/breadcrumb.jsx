@@ -6,8 +6,8 @@ export default function Breadcrumb(props) {
     const pathArray = props.path
     return (
     <div className='h-48 flex flex-col'>
-        <h1 className='text-white text-5xl font-bold mt-auto mb-4'>Job browser</h1>
-        <div className='text-white mb-auto text-sm space-x-2'>
+        <h1 className='text-5xl font-bold mt-auto mb-4 text-white'>Job browser</h1>
+        <div className='mb-auto text-sm space-x-2 text-white'>
             {
                 pathArray.map((value, index) => (
                     <Fragment>
