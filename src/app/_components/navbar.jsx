@@ -2,10 +2,12 @@ import { MdLogin } from 'react-icons/md';
 import Link from 'next/link'
 
 export default function Navbar(props) {
+    const getTitleThemeColor = () => props.theme === 'white' ? 'text-white' : 'text-title-primary'
+    const getLinkThemeColor = () => props.theme === 'white' ? 'text-white' : 'text-link-primary'
     return (
         <div className='container mx-auto flex flex-row items-center py-4'>
-            <h1 className='text-2xl font-bold mr-8 text-title-primary'>ENJOYB</h1>
-            <ul className='text-sm font-semibold space-x-6 text-link-primary'>
+            <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
+            <ul className={`text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
                 <Link href={`/`}>
                     <li className='inline-block hover:text-link-active'>Home</li>
                 </Link>

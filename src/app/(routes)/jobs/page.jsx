@@ -6,7 +6,7 @@ export default async function Jobs() {
     {name: 'Jobs', path: '/jobs'}
   ]
   return (
-    <main className="">
+    <main>
       <div className='bg-breadcrumb-primary'>
         <div className='container mx-auto'>
           <Breadcrumb path={breadcrumbPath} />
