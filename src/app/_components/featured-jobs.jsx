@@ -15,7 +15,7 @@ export default function FeaturedJobs() {
             </p>
         </div>
         <div className='mt-8 grid grid-cols-4 gap-6'>
-          {data.map((job) => <JobCard job={job} />)}
+          {data.map((job) => <JobCard key={job.id} job={job} />)}
         </div>
       </div>
     )
