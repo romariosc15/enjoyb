@@ -9,12 +9,18 @@ module.exports = {
     extend: {
       colors: {
         'title-primary': '#05264e',
+        'description-primary': '#4f5e64',
+        'description-alternative': '#002c3fb3',
         'link-primary': '#022f5d',
-        'link-active': '#1ca774'
+        'link-active': '#1ca774',
+        'money-primary': '#FF8B00'
       },
       backgroundColor: {
         'breadcrumb-primary': '#016551',
         'button-primary': '#1ca774'
+      },
+      borderColor: {
+        'default': '#dee2e6'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
