@@ -4,21 +4,22 @@ import { MdLogin } from 'react-icons/md';
 import Link from 'next/link'
 
 export default function Navbar(props) {
-    const [theme, setTheme] = useState(props.theme);
+    const [isSticky, setIsSticky] = useState(false);
     const stickNavbar = () => {
         if (window !== undefined) {
-          let windowHeight = window.scrollY;
-          windowHeight > 75 ? setTheme('default') : setTheme('white');
+            let windowHeight = window.scrollY;
+            windowHeight > 75 ? setIsSticky(true) : setIsSticky(false);
         }
     };
     useEffect(() => {
+        stickNavbar()
         window.addEventListener('scroll', stickNavbar);
         return () => window.removeEventListener('scroll', stickNavbar);
     }, []);
-    const getContainer = () => theme === 'white' ? 'container mx-auto' : 'sticky top-0 bg-white'
-    const getStickyNavbar = () => theme === 'white' ? '' : 'container mx-auto'
-    const getTitleThemeColor = () => theme === 'white' ? 'text-white' : 'text-title-primary'
-    const getLinkThemeColor = () => theme === 'white' ? 'text-white' : 'text-link-primary'
+    const getContainer = () => isSticky ? 'sticky top-0 bg-white shadow-md' : 'container mx-auto'
+    const getStickyNavbar = () => isSticky ? 'container mx-auto' : ''
+    const getTitleThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-title-primary'
+    const getLinkThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-link-primary'
     return (
         <div className={`${getContainer()}`}>
             <div className={`flex flex-row items-center py-4 ${getStickyNavbar()}`}>

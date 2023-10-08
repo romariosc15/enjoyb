@@ -4,6 +4,7 @@ import { MdArrowDropDown, MdSearch, MdWorkOutline, MdLocationOn } from 'react-ic
 import { AppProvider } from "@/app/_providers/AppContext";
 import ScreenLoader from '@/app/_components/screen-loader'
 import Navbar from '@/app/_components/navbar'
+import Footer from '@/app/_components/Footer'
 import FeaturedJobs from '@/app/_components/featured-jobs'
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
       <Suspense fallback={ <ScreenLoader /> }>
         <AppProvider>
           <div style={{backgroundImage: 'url(./images/background/home/home-search-2.jpg)', height: '800px', backgroundColor: '#021a2e'}} className='bg-no-repeat bg-cover bg-center'>
-            <Navbar theme='white'/>
+            <Navbar theme='home'/>
             <div className='flex flex-col items-center justify-center h-full border-t border-white/25'>
               <h1 className='text-5xl text-white font-bold text-center leading-snug'>
                 Encuentra oportunidades emocionantes<br />
@@ -44,6 +45,7 @@ export default function Home() {
             </div>
           </div>
           <FeaturedJobs />
+          <Footer />
         </AppProvider>
       </Suspense>
     </main>

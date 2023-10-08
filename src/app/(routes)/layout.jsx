@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import ScreenLoader from '@/app/_components/screen-loader'
 import Navbar from '@/app/_components/navbar'
+import Footer from '@/app/_components/Footer'
 
 export default function DefaultLayout({
     children,
@@ -10,6 +11,7 @@ export default function DefaultLayout({
             <Suspense fallback={ <ScreenLoader /> }>
                 <Navbar />
                 { children }
+                <Footer />
             </Suspense>
         </section>
     )
