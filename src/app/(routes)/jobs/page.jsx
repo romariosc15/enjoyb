@@ -1,16 +1,20 @@
+
 import Breadcrumb from '@/app/_components/breadcrumb'
 import JobCard from '@/app/_components/job-card'
+import { contentful } from '@/app/_libs/contentful';
+
 export default async function Jobs() {
   const breadcrumbPath = [
     {name: 'Home', path: '/'},
     {name: 'Jobs', path: '/jobs'}
   ]
-  const data = [
-    {id: 1, logo: 'facebook.png', name: 'Frontend Developer', description: 'CSS3, HTML5, Javascript, Material UI & React', salaryMin: 5500, salaryMax: 7000, company: 'Facebook', location: 'California', typeOfContract: 'Full time', date: '07/10/2023'},
-    {id: 2, logo: 'microsoft.png', name: 'Backend Developer', description: 'Javascript, Node.js, Express & SQL', salaryMin: 5000, salaryMax: 7250, company: 'Microsoft', location: 'New York', typeOfContract: 'Part time', date: '07/10/2023'},
-    {id: 3, logo: 'google.png', name: 'Frontend Developer', description: 'CSS3, HTML5, Javascript, Tailwind & Vue', salaryMin: 5250, salaryMax: 7250, company: 'Google', location: 'San Francisco', typeOfContract: 'Full time', date: '07/10/2023'},
-    {id: 4, logo: 'airbnb.png', name: 'UX/UI Designer', description: 'Adobe XD, Figma, HTML & CSS', salaryMin: 4000, salaryMax: 6500, company: 'Airbnb', location: 'San Francisco', typeOfContract: 'Full time', date: '07/10/2023'}
-  ]
+
+  const response = await contentful.getEntries({
+    content_type: 'jobs'
+  });
+
+  const jobs = response.items;
+
   return (
     <main>
       <div className='bg-section-primary'>
@@ -34,7 +38,7 @@ export default async function Jobs() {
           </div>
         </div>
         <div className='col-span-2 space-y-6'>
-          {data.map((job) => <JobCard key={job.id} job={job} />)}
+          {jobs.map((job) => <JobCard key={job.sys.id} job={job} />)}
         </div>
       </div>
     </main>

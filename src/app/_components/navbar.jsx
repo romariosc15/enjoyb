@@ -11,6 +11,7 @@ export default function Navbar(props) {
             windowHeight > 75 ? setIsSticky(true) : setIsSticky(false);
         }
     };
+
     useEffect(() => {
         stickNavbar()
         window.addEventListener('scroll', stickNavbar);
