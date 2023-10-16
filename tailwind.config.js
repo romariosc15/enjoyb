@@ -24,8 +24,9 @@ module.exports = {
         'section-alternative': '#f7f9fc',
         'span-primary': '#f3f6fa',
         'button-primary': '#1ca774',
-        'button-alternative': '#f1f5f8',
-        'icon-primary': '#3d9b66'
+        'gray-alternative': '#f1f5f8',
+        'icon-primary': '#3d9b66',
+        'detail-primary': '#081721'
       },
       borderColor: {
         'default': '#dee2e6',
