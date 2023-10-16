@@ -14,6 +14,7 @@ export default async function Jobs() {
   });
 
   const jobs = response.items;
+  console.log(jobs)
 
   return (
     <main>

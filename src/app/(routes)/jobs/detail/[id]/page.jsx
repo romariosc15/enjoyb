@@ -4,14 +4,9 @@ import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md';
 
 export default async function JobDetail(props) {
-  const breadcrumbPath = [
-    {name: 'Home', path: '/'},
-    {name: 'Jobs', path: '/jobs'}
-  ]
-  const response = await contentful.getEntry({
-    content_type: 'jobs',
-    id: props.params.id,
-  });
+  const response = await contentful.getEntry(props.params.id);
+
+  console.log(props.params.id)
 
   const job = response;
   return (
