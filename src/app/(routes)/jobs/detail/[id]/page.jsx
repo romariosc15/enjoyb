@@ -1,12 +1,10 @@
-import Breadcrumb from '@/app/_components/breadcrumb'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { contentful } from '@/app/_libs/contentful';
 import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md';
 
 export default async function JobDetail(props) {
   const response = await contentful.getEntry(props.params.id);
-
-  console.log(props.params.id)
 
   const job = response;
   return (
@@ -22,9 +20,7 @@ export default async function JobDetail(props) {
               Jobs
             </Link>
             <span className='opacity-75'>/</span>
-            <Link href='/jobs'>
-              { job.fields.title }
-            </Link>
+            <span>{ job.fields.title }</span>
           </div>
           <div className='space-y-2'>
             <span className='text-xs w-fit font-medium bg-lime-600 text-white py-1.5 px-3 rounded-md'>{ job.fields.jobType }</span>
@@ -42,7 +38,9 @@ export default async function JobDetail(props) {
           <div className='bg-white border border-default rounded-md px-4 py-6 col-span-2'>
             <div className='space-y-2'>
               <h3 className='text-xl font-bold text-title-primary'>Job description</h3>
-              <p className='text-base text-description-primary'>{ job.fields.description }</p>
+              <div className='space-y-2 text-description-primary'>
+                { documentToReactComponents(job.fields.description) }
+              </div>
             </div>
           </div>
           <div className='bg-white border border-default rounded-md px-4 py-6 h-fit space-y-3'>

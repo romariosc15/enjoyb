@@ -15,7 +15,7 @@ export default function Home() {
         <AppProvider>
           <div style={{backgroundImage: 'url(./images/background/home/home-search-2.jpg)', height: '800px', backgroundColor: '#021a2e'}} className='bg-no-repeat bg-cover bg-center'>
             <Navbar theme='home'/>
-            <div className='flex flex-col items-center justify-center h-full border-t border-white/25'>
+            <div className='flex flex-col items-center justify-center h-full border-t border-white/20'>
               <h1 className='text-5xl text-white font-bold text-center leading-snug'>
                 Encuentra oportunidades emocionantes<br />
                 & totalmente remotas

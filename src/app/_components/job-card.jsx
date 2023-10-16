@@ -4,7 +4,7 @@ import { MdLocationOn } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa6";
 export default function JobCard(props) {
     return (
-        <div className='border border-default rounded-md px-6 py-6'>
+        <div className='border border-default rounded-md px-6 py-4'>
             <div className='flex flex-row items-center'>
                 <Image
                     className='w-12 h-12'
@@ -14,7 +14,7 @@ export default function JobCard(props) {
                     alt={props.job.fields.title}
                 />
                 <div className='ml-4 flex flex-col'>
-                    <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1.5 px-3 rounded-md'>{ props.job.fields.jobType }</span>
+                    <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1 px-3 rounded-md'>{ props.job.fields.jobType }</span>
                     <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary text-lg font-bold mt-1'>
                         { props.job.fields.title }
                     </Link>
@@ -34,11 +34,11 @@ export default function JobCard(props) {
                 </div>
                 <div className='ml-auto space-x-4'>
                     <Link href={`/jobs/detail/${props.job.sys.id}`}>
-                        <button className='bg-gray-alternative text-button-primary text-sm font-medium px-4 py-3 rounded-xl'>
+                        <button className='bg-gray-alternative text-button-primary text-sm font-medium px-5 py-3 rounded-xl'>
                             Ver detalle
                         </button>
                     </Link>
-                    <button className='bg-button-primary text-white text-sm font-medium px-4 py-3 rounded-xl'>
+                    <button className='bg-button-primary text-white text-sm font-medium px-5 py-3 rounded-xl'>
                         Aplicación rápida
                     </button>
                 </div>
