@@ -4,7 +4,7 @@ import { MdArrowDropDown, MdSearch, MdWorkOutline, MdLocationOn } from 'react-ic
 import { AppProvider } from "@/app/_providers/AppContext";
 import ScreenLoader from '@/app/_components/screen-loader'
 import Navbar from '@/app/_components/navbar'
-import Footer from '@/app/_components/Footer'
+import Footer from '@/app/_components/footer'
 import FeaturedJobs from '@/app/_components/featured-jobs'
 
 export default function Home() {

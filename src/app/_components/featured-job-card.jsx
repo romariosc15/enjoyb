@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MdOutlineWatchLater, MdCalendarMonth, MdLocationOn } from 'react-icons/md';
+
 export default function FeaturedJobCard(props) {
-  console.log(props.job)
   return (
     <div className='border border-default rounded-md px-5 py-10'>
       <div className='flex flex-row space-x-4'>
