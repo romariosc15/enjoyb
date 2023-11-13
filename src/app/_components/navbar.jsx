@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { MdLogin } from 'react-icons/md';
 import Link from 'next/link'
+import {Button} from "@nextui-org/button";
 
 export default function Navbar(props) {
     const [isSticky, setIsSticky] = useState(false);
@@ -21,26 +22,30 @@ export default function Navbar(props) {
     const getStickyNavbar = () => isSticky ? 'container mx-auto' : ''
     const getTitleThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-title-primary'
     const getLinkThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-link-primary'
+    const routes = [
+        {path: '/', label: 'Home'},
+        {path: '/jobs', label: 'Jobs'},
+        {path: '/jobs/search', label: 'Advanced search'}
+    ]
     return (
         <div className={`${getContainer()}`}>
             <div className={`flex flex-row items-center py-4 ${getStickyNavbar()}`}>
                 <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
                 <ul className={`text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
-                    <Link href={`/`}>
-                        <li className='inline-block hover:text-link-active'>Home</li>
-                    </Link>
-                    <Link href={`/jobs`}>
-                        <li className='inline-block hover:text-link-active'>Jobs</li>
-                    </Link>
-                    <Link href={`/jobs/search`}>
-                        <li className='inline-block hover:text-link-active'>Advanced search</li>
-                    </Link>
+                    {
+                        routes.map((route) => (
+                            <li key={route.path} className='transition-colors inline-block hover:text-link-active'>
+                                <Link href={route.path}>
+                                    {route.label}
+                                </Link>
+                            </li>
+                        ))
+                    }
                 </ul>
                 <div className='ml-auto'>
-                    <Link href={`/`} className='py-3 px-4 space-x-2 flex items-center rounded-md text-sm bg-button-primary text-white font-semibold'>
-                        <MdLogin size={20} />
-                        <span>Login</span>
-                    </Link>
+                    <Button href={`/`} as={Link} className='bg-button-primary text-white'>
+                        <MdLogin size={20} /> Login
+                    </Button>
                 </div>
             </div>
         </div>

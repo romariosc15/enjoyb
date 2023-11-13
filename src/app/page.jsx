@@ -10,9 +10,8 @@ import FeaturedJobs from '@/app/_components/featured-jobs'
 export default function Home() {
   //const { navbarTheme, setNavbarTheme } = useAppContext()
   return (
-    <main>
-      <Suspense fallback={ <ScreenLoader /> }>
-        <AppProvider>
+    <Suspense fallback={ <ScreenLoader /> }>
+      <AppProvider>
           <div style={{backgroundImage: 'url(./images/background/home/home-search-2.jpg)', height: '800px', backgroundColor: '#021a2e'}} className='bg-no-repeat bg-cover bg-center'>
             <Navbar theme='home'/>
             <div className='flex flex-col items-center justify-center h-full border-t border-white/20'>
@@ -46,9 +45,8 @@ export default function Home() {
           </div>
           <FeaturedJobs />
           <Footer />
-        </AppProvider>
-      </Suspense>
-    </main>
+      </AppProvider>
+    </Suspense>
   )
 }
  

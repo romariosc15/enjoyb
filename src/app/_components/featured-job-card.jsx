@@ -15,7 +15,7 @@ export default function FeaturedJobCard(props) {
         />
         <div className='text-left'>
           <p className='text-title-muted text-xs'>{ props.job.fields.company }</p>
-          <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary font-bold'>
+          <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary font-bold hover:text-link-active transition-colors'>
               { props.job.fields.title }
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function FeaturedJobCard(props) {
           <span className='text-title-primary font-extrabold text-normal'>
               {`$${props.job.fields.minimumSalary} - $${props.job.fields.maximumSalary}`}
           </span>
-          <button className='bg-button-primary text-white text-sm font-medium px-4 py-3 rounded-xl'>
+          <button className='bg-button-primary hover:opacity-90 transition-opacity text-white text-sm font-medium px-4 py-3 rounded-xl'>
             Aplicación rápida
           </button>
       </div>

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { MdLocationOn } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa6";
+import {Button} from "@nextui-org/button";
 export default function JobCard(props) {
     return (
         <div className='border border-default rounded-md px-6 py-4'>
@@ -33,14 +34,12 @@ export default function JobCard(props) {
                     </span>
                 </div>
                 <div className='ml-auto space-x-4'>
-                    <Link href={`/jobs/detail/${props.job.sys.id}`}>
-                        <button className='bg-gray-alternative text-button-primary text-sm font-medium px-5 py-3 rounded-xl'>
-                            Ver detalle
-                        </button>
-                    </Link>
-                    <button className='bg-button-primary text-white text-sm font-medium px-5 py-3 rounded-xl'>
+                    <Button href={`/jobs/detail/${props.job.sys.id}`} as={Link} className='bg-gray-alternative text-button-primary'>
+                        Ver detalle
+                    </Button>
+                    <Button className='bg-button-primary text-white'>
                         Aplicación rápida
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

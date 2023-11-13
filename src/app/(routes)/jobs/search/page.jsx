@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
 export default function JobSearch() {
   return (
-    <main className="">
+    <Fragment>
       <div className=''>
         Search
       </div>
-    </main>
+    </Fragment>
   )
 }

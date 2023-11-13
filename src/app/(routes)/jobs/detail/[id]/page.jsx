@@ -1,14 +1,16 @@
+import { Fragment } from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { contentful } from '@/app/_libs/contentful';
 import Link from 'next/link'
 import { MdLocationOn } from 'react-icons/md';
+import {Button} from "@nextui-org/button";
 
 export default async function JobDetail(props) {
   const response = await contentful.getEntry(props.params.id);
 
   const job = response;
   return (
-    <main>
+    <Fragment>
       <div className='bg-detail-primary text-white'>
         <div className='container mx-auto py-8'>
           <div className='text-sm space-x-2 mb-8'>
@@ -33,7 +35,7 @@ export default async function JobDetail(props) {
           <p className='text-sm mt-4'>{ job.fields.summary }</p>
         </div>
       </div>
-      <div className='bg-gray-alternative'>
+      <div className='bg-gray-alternative min-h-[600px]'>
         <div className='container mx-auto py-8 grid grid-cols-3 gap-8'>
           <div className='bg-white border border-default rounded-md px-4 py-6 col-span-2'>
             <div className='space-y-2'>
@@ -67,6 +69,6 @@ export default async function JobDetail(props) {
           </div>
         </div>
       </div>
-    </main>
+    </Fragment>
   )
 }
