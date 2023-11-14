@@ -47,12 +47,10 @@ module.exports = {
       themes: {
         light: {
           colors: {
-            /*
             success: {
               DEFAULT: '#1ca774',
               foreground: '#FFF',
             },
-            */
           },
         },
       },

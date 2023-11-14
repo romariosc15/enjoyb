@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MdOutlineWatchLater, MdCalendarMonth, MdLocationOn } from 'react-icons/md';
+import {Button} from "@nextui-org/button";
 
 export default function FeaturedJobCard(props) {
   return (
@@ -30,9 +31,9 @@ export default function FeaturedJobCard(props) {
           <span className='text-title-primary font-extrabold text-normal'>
               {`$${props.job.fields.minimumSalary} - $${props.job.fields.maximumSalary}`}
           </span>
-          <button className='bg-button-primary hover:opacity-90 transition-opacity text-white text-sm font-medium px-4 py-3 rounded-xl'>
+          <Button className='bg-button-primary text-white'>
             Aplicación rápida
-          </button>
+          </Button>
       </div>
     </div>
   )

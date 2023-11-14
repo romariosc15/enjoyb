@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MdLocationOn } from 'react-icons/md';
 import { FaMoneyBillWave } from "react-icons/fa6";
 import {Button} from "@nextui-org/button";
+
 export default function JobCard(props) {
     return (
         <div className='border border-default rounded-md px-6 py-4'>
