@@ -62,9 +62,9 @@ export default async function JobDetail(props) {
               </div>
             </div>
             <div className='text-center'>
-              <button className='w-1/2 py-3 px-4 space-x-2 rounded-md text-sm bg-button-primary text-white font-semibold text-center'>
+              <Button size='lg' className='bg-button-primary text-white font-medium'>
                 Enviar aplicación
-              </button>
+              </Button>
             </div>
           </div>
         </div>

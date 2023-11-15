@@ -55,7 +55,7 @@ export default function Navbar(props) {
                 </div>
                 <div>
                     <Slider 
-                        label="Price Range"
+                        label="Salary range"
                         step={50} 
                         minValue={0} 
                         maxValue={300000} 
