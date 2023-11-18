@@ -4,7 +4,7 @@ import {Select, SelectItem} from "@nextui-org/select";
 import {CheckboxGroup, Checkbox} from "@nextui-org/checkbox";
 import {Slider} from "@nextui-org/slider";
 
-export default function Navbar(props) {
+export default function Filters(props) {
     const industries = [
         {label: 'Software development', value: 'software'},
         {label: 'Healthcare', value: 'healthcare'},
@@ -23,7 +23,7 @@ export default function Navbar(props) {
             </div>
             <div className='py-4 px-6 space-y-4'>
                 <div className='space-y-2'>
-                    <label className='text-lg font-medium text-label-primary' htmlFor="job-category">Industry</label>
+                    <label className='text-lg font-medium text-label-primary' htmlFor="industry">Industry</label>
                     <Select
                         label='Select an industry'
                         placeholder=''
