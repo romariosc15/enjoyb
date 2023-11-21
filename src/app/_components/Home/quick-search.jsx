@@ -23,7 +23,8 @@ export default function QuickSearch(props) {
                     size='lg'
                     type='text'
                     label=''
-                    placeholder='Keywords'
+                    aria-label='Search by keywords'
+                    placeholder='Search by keywords'
                     startContent={
                         <MdSearch size={20} className='mr-1' />
                     }
@@ -34,6 +35,7 @@ export default function QuickSearch(props) {
                     label=''
                     size='lg'
                     placeholder='Select an industry'
+                    aria-label='Select an industry'
                     className=''
                     classNames={{
                         trigger: 'bg-white rounded-none border-x',
@@ -54,6 +56,7 @@ export default function QuickSearch(props) {
                     label=''
                     size='lg'
                     placeholder='Select a location'
+                    aria-label='Select a location'
                     className=''
                     classNames={{
                         trigger: 'bg-white rounded-none',

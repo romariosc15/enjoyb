@@ -16,7 +16,7 @@ export default function JobCard(props) {
                     alt={props.job.fields.title}
                 />
                 <div className='ml-4 flex flex-col'>
-                    <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1 px-3 rounded-md'>{ props.job.fields.jobType }</span>
+                    <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1 px-3 rounded-md'>{ props.job.fields.jobType.fields.name }</span>
                     <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary text-lg font-bold mt-1'>
                         { props.job.fields.title }
                     </Link>

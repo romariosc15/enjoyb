@@ -1,25 +1,58 @@
 'use client'
-import { Fragment } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import {Select, SelectItem} from "@nextui-org/select";
 import {CheckboxGroup, Checkbox} from "@nextui-org/checkbox";
 import {Slider} from "@nextui-org/slider";
+import {Button} from "@nextui-org/button";
+import { AppContext } from "@/app/_providers/AppContext";
+import { getJobTypes, getIndustries} from '@/actions/contentful'
 
-export default function Filters(props) {
-    const industries = [
-        {label: 'Software development', value: 'software'},
-        {label: 'Healthcare', value: 'healthcare'},
-    ]
-    const jobTypes = [
-        {value: "full-time", label: 'Full-time'},
-        {value: "part-time", label: 'Part-time'},
-        {value: "contract", label: 'Contract'},
-        {value: "temporary", label: 'Temporary'},
-        {value: "internship", label: 'Internship'},
-    ]
+export default function Filters() {
+    const [industries, setIndustries] = useState([])
+    const [jobTypes, setJobTypes] = useState([])
+    const { setFilters } = useContext(AppContext)
+
+    const [industrySelect, setIndustrySelect] = useState(new Set([]))
+    const [jobTypesCheckboxes, setJobTypesCheckboxes] = useState([])
+
+    useEffect(() => {
+        const fetchIndustries = async () => {
+            const response = await getIndustries()
+            setIndustries(response)
+        }
+        const fetchJobTypes = async () => {
+            const response = await getJobTypes()
+            setJobTypes(response)
+        }
+        fetchIndustries()
+        fetchJobTypes()
+    }, [])
+
+    useEffect(() => {
+        setFilters({
+            industry: industrySelect,
+            jobType: jobTypesCheckboxes,
+        })
+    }, [industrySelect, jobTypesCheckboxes, setFilters])
+
+    const clearFilters = () => {
+        setIndustrySelect(new Set([]))
+        setJobTypesCheckboxes([])
+        setFilters({})
+    }
+
     return (
         <Fragment>
-            <div className='py-4 px-6 border-b border-alternative'>
+            <div className='py-2.5 px-6 border-b border-alternative flex justify-between items-center'>
                 <h1 className='text-xl font-bold text-title-primary'>Search filters</h1>
+                <Button
+                    className='text-gray-600'
+                    onPress={() => clearFilters()}
+                    color='default'
+                    variant='light'
+                >
+                    Clear filters
+                </Button>
             </div>
             <div className='py-4 px-6 space-y-4'>
                 <div className='space-y-2'>
@@ -31,10 +64,13 @@ export default function Filters(props) {
                         classNames={{
                             trigger: 'bg-white',
                         }}
+                        selectedKeys={industrySelect}
+                        onSelectionChange={(value) => setIndustrySelect(value)}
+                        selectionMode='single'
                     >
                         {industries.map((industry) => (
-                            <SelectItem key={industry.value} value={industry.value}>
-                                {industry.label}
+                            <SelectItem key={industry.fields.key} value={industry.fields.key}>
+                                {industry.fields.name}
                             </SelectItem>
                         ))}
                     </Select>
@@ -42,14 +78,16 @@ export default function Filters(props) {
                 <div>
                     <CheckboxGroup
                         label='Job type'
-                        defaultValue={['full-time']}
+                        defaultValue={[]}
                         classNames={{
                             label: 'text-lg font-medium text-label-primary',
                         }}
                         color='success'
+                        value={jobTypesCheckboxes}
+                        onValueChange={(value) => setJobTypesCheckboxes(value)}
                     >
                         {jobTypes.map((type) => (
-                            <Checkbox classNames={{label: 'text-sm'}} key={type.value} value={type.value}>{type.label}</Checkbox>
+                            <Checkbox classNames={{label: 'text-sm'}} key={type.fields.key} value={type.fields.key}>{type.fields.name}</Checkbox>
                         ))}
                     </CheckboxGroup>
                 </div>

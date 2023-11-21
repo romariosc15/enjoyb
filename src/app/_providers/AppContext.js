@@ -1,12 +1,17 @@
-"use client"
-import React, { createContext, useState, useContext } from 'react';
- const AppContext = createContext();
- export const AppProvider = ({ children }) => {
-    const [navbarTheme, setNavbarTheme] = useState('default');
+'use client'
+import { createContext, useState } from 'react';
+
+export const AppContext = createContext();
+
+export function AppProvider({ children }) {
+    const [filters, setFilters] = useState({});
     const value = {
-        navbarTheme,
-        setNavbarTheme,
+        filters,
+        setFilters,
     };
-    return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
- };
- export const useAppContext = () => useContext(AppContext)
+    return (
+      <AppContext.Provider value={value}>
+        {children}
+      </AppContext.Provider>
+    );
+}
