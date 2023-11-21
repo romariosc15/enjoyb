@@ -24,7 +24,7 @@ export default function FeaturedJobCard(props) {
       <p className='text-description-primary text-sm mt-4'>{ props.job.fields.summary }</p>
       <div className='space-x-2 mt-4 text-span-primary font-medium'>
         <span className='text-xs bg-span-primary py-1 px-2'><MdLocationOn className='inline-block align-sub' size={15} /> { props.job.fields.location }</span>
-        <span className='text-xs bg-span-primary py-1 px-2'><MdOutlineWatchLater className='inline-block align-sub' size={15} /> { props.job.fields.jobType }</span>
+        <span className='text-xs bg-span-primary py-1 px-2'><MdOutlineWatchLater className='inline-block align-sub' size={15} /> { props.job.fields.jobType.fields.name }</span>
         <span className='text-xs bg-span-primary py-1 px-2'><MdCalendarMonth className='inline-block align-sub' size={15} /> { props.job.fields.publicationDate }</span>
       </div>
       <div className='mt-10 flex flex-row justify-between items-center'>

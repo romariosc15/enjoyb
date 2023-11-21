@@ -25,7 +25,7 @@ export default async function JobDetail(props) {
             <span>{ job.fields.title }</span>
           </div>
           <div className='space-y-2'>
-            <span className='text-xs w-fit font-medium bg-lime-600 text-white py-1.5 px-3 rounded-md'>{ job.fields.jobType }</span>
+            <span className='text-xs w-fit font-medium bg-lime-600 text-white py-1.5 px-3 rounded-md'>{ job.fields.jobType.fields.name }</span>
             <h1 className='text-3xl font-bold'>{ job.fields.title }</h1>
             <span className='text-xs'>
               <MdLocationOn className='inline-block align-sub mr-1' size={15} />
