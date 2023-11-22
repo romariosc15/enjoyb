@@ -1,16 +1,18 @@
 'use client'
-import { Fragment, useEffect, useState, useContext } from "react"
+import { Fragment, useEffect, useState, useContext } from 'react'
 import Breadcrumb from '@/app/_components/breadcrumb'
 import JobCard from '@/app/_components/job-card'
 import Filters from '@/app/_components/filters'
 import { getJobs } from '@/actions/contentful'
-import { AppContext } from "@/app/_providers/AppContext";
+import { AppContext } from '@/app/_providers/AppContext';
+import JobCardSkeleton from '@/app/_components/Skeleton/job-card'
 
 export default function JobsContainer(props) {
     const breadcrumbPath = [
         {name: 'Home', path: '/'},
         {name: 'Jobs', path: '/jobs'}
     ]
+    const [areJobsLoading, setAreJobsLoading] = useState(true)
     const [jobs, setJobs] = useState([])
     const { filters } = useContext(AppContext)
 
@@ -18,6 +20,7 @@ export default function JobsContainer(props) {
         const fetchJobs = async () => {
             const response = await getJobs(filters)
             setJobs(response)
+            setAreJobsLoading(false)
         }
         fetchJobs()
     }, [filters])
@@ -34,7 +37,10 @@ export default function JobsContainer(props) {
                     <Filters />
                 </div>
                 <div className='col-span-2 space-y-6'>
-                    {jobs.map((job) => <JobCard key={job.sys.id} job={job} />)}
+                    {
+                        areJobsLoading ? [...Array(4)].map((_, index) => <JobCardSkeleton key={`job-card-skeleton-${index}`} />)
+                        : jobs.map((job) => <JobCard key={job.sys.id} job={job} />)
+                    }
                 </div>
             </div>
         </Fragment>

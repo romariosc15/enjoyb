@@ -6,10 +6,13 @@ import {Slider} from "@nextui-org/slider";
 import {Button} from "@nextui-org/button";
 import { AppContext } from "@/app/_providers/AppContext";
 import { getJobTypes, getIndustries} from '@/actions/contentful'
+import CheckboxGroupSkeleton from '@/app/_components/Skeleton/checkbox-group'
 
 export default function Filters() {
     const [industries, setIndustries] = useState([])
+    const [areIndustriesLoading, setAreIndustriesLoading] = useState(true)
     const [jobTypes, setJobTypes] = useState([])
+    const [areJobTypesLoading, setAreJobTypesLoading] = useState(true)
     const { setFilters } = useContext(AppContext)
 
     const [industrySelect, setIndustrySelect] = useState(new Set([]))
@@ -19,10 +22,12 @@ export default function Filters() {
         const fetchIndustries = async () => {
             const response = await getIndustries()
             setIndustries(response)
+            setAreIndustriesLoading(false)
         }
         const fetchJobTypes = async () => {
             const response = await getJobTypes()
             setJobTypes(response)
+            setAreJobTypesLoading(false)
         }
         fetchIndustries()
         fetchJobTypes()
@@ -67,6 +72,7 @@ export default function Filters() {
                         selectedKeys={industrySelect}
                         onSelectionChange={(value) => setIndustrySelect(value)}
                         selectionMode='single'
+                        isDisabled={areJobTypesLoading}
                     >
                         {industries.map((industry) => (
                             <SelectItem key={industry.fields.key} value={industry.fields.key}>
@@ -75,21 +81,22 @@ export default function Filters() {
                         ))}
                     </Select>
                 </div>
-                <div>
-                    <CheckboxGroup
-                        label='Job type'
-                        defaultValue={[]}
-                        classNames={{
-                            label: 'text-lg font-medium text-label-primary',
-                        }}
-                        color='success'
-                        value={jobTypesCheckboxes}
-                        onValueChange={(value) => setJobTypesCheckboxes(value)}
-                    >
-                        {jobTypes.map((type) => (
-                            <Checkbox classNames={{label: 'text-sm'}} key={type.fields.key} value={type.fields.key}>{type.fields.name}</Checkbox>
-                        ))}
-                    </CheckboxGroup>
+                <div className='space-y-2'>
+                    <label className='text-lg font-medium text-label-primary' htmlFor="jobType">Job type</label>
+                    {
+                        areIndustriesLoading ? <CheckboxGroupSkeleton />
+                        :
+                        <CheckboxGroup
+                            defaultValue={[]}
+                            color='success'
+                            value={jobTypesCheckboxes}
+                            onValueChange={(value) => setJobTypesCheckboxes(value)}
+                        >
+                            {jobTypes.map((type) => (
+                                <Checkbox classNames={{label: 'text-sm'}} key={type.fields.key} value={type.fields.key}>{type.fields.name}</Checkbox>
+                            ))}
+                        </CheckboxGroup>
+                    }
                 </div>
                 <div>
                     <Slider 
