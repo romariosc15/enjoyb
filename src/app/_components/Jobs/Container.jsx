@@ -5,7 +5,7 @@ import JobCard from '@/app/_components/job-card'
 import Filters from '@/app/_components/filters'
 import { getJobs } from '@/actions/contentful'
 import { AppContext } from '@/app/_providers/AppContext';
-import JobCardSkeleton from '@/app/_components/Skeleton/job-card'
+import JobCardSkeleton from '@/app/_components/Skeletons/job-card'
 
 export default function JobsContainer(props) {
     const breadcrumbPath = [
@@ -19,6 +19,7 @@ export default function JobsContainer(props) {
     useEffect(() => {
         const fetchJobs = async () => {
             const response = await getJobs(filters)
+            console.log(response)
             setJobs(response)
             setAreJobsLoading(false)
         }

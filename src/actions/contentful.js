@@ -21,6 +21,15 @@ export async function getJobs(query = {}) {
     return response.items;
 }
 
+export async function getFeaturedJobs() {
+    const response = await contentful.getEntries({
+        content_type: 'jobs',
+        'fields.isFeatured': 'true',
+    });
+    
+    return response.items;
+}
+
 export async function getJobTypes() {
     const response = await contentful.getEntries({
         content_type: 'jobTypes',

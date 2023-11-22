@@ -1,11 +1,19 @@
+'use client'
+import { useEffect, useState } from 'react';
 import FeaturedJobCard from '@/app/_components/featured-job-card'
-import { contentful } from '@/app/_libs/contentful';
-export default async function FeaturedJobs() {
-  const response = await contentful.getEntries({
-    content_type: 'jobs'
-  });
+import { getFeaturedJobs} from '@/actions/contentful'
 
-  const jobs = response.items;
+export default function FeaturedJobs() {
+  const [featuredJobs, setFeaturedJobs] = useState([])
+  const [areFeaturedJobsLoading, setAreFeaturedJobsLoading] = useState(true)
+    useEffect(() => {
+        const fetchFeaturedJobs = async () => {
+            const response = await getFeaturedJobs()
+            setFeaturedJobs(response)
+            setAreFeaturedJobsLoading(false)
+        }
+        fetchFeaturedJobs()
+    }, [])
   return (
     <div className='container mx-auto py-12'>
       <div className='flex flex-col justify-center items-center'>
@@ -15,7 +23,7 @@ export default async function FeaturedJobs() {
           </p>
       </div>
       <div className='mt-8 grid grid-cols-4 gap-5'>
-        {jobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)}
+        {featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)}
       </div>
     </div>
   )

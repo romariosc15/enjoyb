@@ -6,7 +6,7 @@ import {Slider} from "@nextui-org/slider";
 import {Button} from "@nextui-org/button";
 import { AppContext } from "@/app/_providers/AppContext";
 import { getJobTypes, getIndustries} from '@/actions/contentful'
-import CheckboxGroupSkeleton from '@/app/_components/Skeleton/checkbox-group'
+import CheckboxGroupSkeleton from '@/app/_components/Skeletons/checkbox-group'
 
 export default function Filters() {
     const [industries, setIndustries] = useState([])
@@ -72,7 +72,7 @@ export default function Filters() {
                         selectedKeys={industrySelect}
                         onSelectionChange={(value) => setIndustrySelect(value)}
                         selectionMode='single'
-                        isDisabled={areJobTypesLoading}
+                        isDisabled={areIndustriesLoading}
                     >
                         {industries.map((industry) => (
                             <SelectItem key={industry.fields.key} value={industry.fields.key}>
@@ -84,7 +84,7 @@ export default function Filters() {
                 <div className='space-y-2'>
                     <label className='text-lg font-medium text-label-primary' htmlFor="jobType">Job type</label>
                     {
-                        areIndustriesLoading ? <CheckboxGroupSkeleton />
+                        areJobTypesLoading ? <CheckboxGroupSkeleton />
                         :
                         <CheckboxGroup
                             defaultValue={[]}
