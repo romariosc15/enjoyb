@@ -7,7 +7,7 @@ import { getJobs } from '@/actions/contentful'
 import { AppContext } from '@/app/_providers/AppContext';
 import JobCardSkeleton from '@/app/_components/Skeletons/job-card'
 
-export default function JobsContainer(props) {
+export default function JobsContainer() {
     const breadcrumbPath = [
         {name: 'Home', path: '/'},
         {name: 'Jobs', path: '/jobs'}
