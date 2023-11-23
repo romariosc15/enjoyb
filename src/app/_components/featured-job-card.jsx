@@ -5,7 +5,7 @@ import {Button} from "@nextui-org/button";
 
 export default function FeaturedJobCard(props) {
   return (
-    <div className='border border-default rounded-md px-5 py-10'>
+    <div className='border border-default rounded-md px-5 py-8'>
       <div className='flex flex-row gap-4 items-center'>
         {
           'logo' in props.job.fields ? 

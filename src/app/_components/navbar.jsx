@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { MdLogin } from 'react-icons/md';
 import Link from 'next/link'
 import {Button} from "@nextui-org/button";
+import LoginModal from '@/app/_components/Modals/Login'
 
 export default function Navbar(props) {
     const [isSticky, setIsSticky] = useState(false);
@@ -46,6 +47,7 @@ export default function Navbar(props) {
                     <Button href={`/`} as={Link} className='bg-button-primary text-white'>
                         <MdLogin size={20} /> Login
                     </Button>
+                    <LoginModal /> 
                 </div>
             </div>
         </div>

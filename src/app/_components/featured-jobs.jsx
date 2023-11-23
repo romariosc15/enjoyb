@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import FeaturedJobCard from '@/app/_components/featured-job-card'
+import FeaturedJobCardSkeleton from '@/app/_components/Skeletons/featured-job-card'
 import { getFeaturedJobs} from '@/actions/contentful'
 
 export default function FeaturedJobs() {
@@ -23,7 +24,10 @@ export default function FeaturedJobs() {
           </p>
       </div>
       <div className='mt-8 grid grid-cols-4 gap-5'>
-        {featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)}
+        {
+          areFeaturedJobsLoading ? [...Array(4)].map((_, index) => <FeaturedJobCardSkeleton key={index} />)
+          : featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)
+        }
       </div>
     </div>
   )
