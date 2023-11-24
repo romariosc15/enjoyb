@@ -6,8 +6,8 @@ import {Button} from "@nextui-org/button";
 
 export default function JobCard(props) {
     return (
-        <div className='border border-default rounded-md px-6 py-4'>
-            <div className='flex flex-row items-center'>
+        <div className='border border-default rounded-md px-4 xl:px-6 py-4'>
+            <div className='grid grid-cols-5 xl:flex xl:flex-row items-center gap-y-4'>
                 {
                     'logo' in props.job.fields ? 
                         <Image
@@ -19,7 +19,7 @@ export default function JobCard(props) {
                         />
                     : <MdOutlineBrokenImage className='w-12 h-12' />
                 }
-                <div className='ml-4 flex flex-col'>
+                <div className='xl:ml-4 col-span-4 flex flex-col'>
                     <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1 px-3 rounded-md'>{ props.job.fields.jobType.fields.name }</span>
                     <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary text-lg font-bold mt-1'>
                         { props.job.fields.title }
@@ -30,7 +30,7 @@ export default function JobCard(props) {
                         <span className='text-description-alternative text-xs'>{ props.job.fields.publicationDate }</span>
                     </div>
                 </div>
-                <div className='mx-auto gap-2 flex flex-row items-center'>
+                <div className='mx-auto hidden xl:flex xl:flex-row xl:items-center xl:gap-2'>
                     <div className='rounded-full flex flex-row bg-icon-primary items-center p-1.5'>
                         <FaMoneyBillWave className='inline-block align-sub text-white' size={20} />
                     </div>
@@ -38,7 +38,7 @@ export default function JobCard(props) {
                         {`$${props.job.fields.minimumSalary}/yr - $${props.job.fields.maximumSalary}/yr`}
                     </span>
                 </div>
-                <div className='space-x-4'>
+                <div className='space-x-4 col-span-5 text-center'>
                     <Button href={`/jobs/detail/${props.job.sys.id}`} as={Link} className='bg-gray-alternative text-button-primary'>
                         Ver detalle
                     </Button>

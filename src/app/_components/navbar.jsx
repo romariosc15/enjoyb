@@ -1,8 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { MdLogin } from 'react-icons/md';
 import Link from 'next/link'
-import {Button} from "@nextui-org/button";
 import LoginModal from '@/app/_components/Modals/Login'
 
 export default function Navbar(props) {
@@ -30,9 +28,9 @@ export default function Navbar(props) {
     ]
     return (
         <div className={`${getContainer()}`}>
-            <div className={`flex flex-row items-center py-4 ${getStickyNavbar()}`}>
+            <div className={`flex flex-row items-center px-6 xl:px-0 py-4 ${getStickyNavbar()}`}>
                 <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
-                <ul className={`text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
+                <ul className={`hidden xl:block text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
                     {
                         routes.map((route) => (
                             <li key={route.path} className='transition-colors inline-block hover:text-link-active'>
@@ -44,9 +42,6 @@ export default function Navbar(props) {
                     }
                 </ul>
                 <div className='ml-auto'>
-                    <Button href={`/`} as={Link} className='bg-button-primary text-white'>
-                        <MdLogin size={20} /> Login
-                    </Button>
                     <LoginModal /> 
                 </div>
             </div>

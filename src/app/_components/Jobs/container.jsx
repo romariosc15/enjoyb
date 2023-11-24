@@ -33,11 +33,11 @@ export default function JobsContainer() {
                     <Breadcrumb path={breadcrumbPath} />
                 </div>
             </div>
-            <div className='grid grid-cols-3 gap-6 container mx-auto py-12 min-h-[650px]'>
+            <div className='grid grid-cols-1 xl:grid-cols-3 gap-6 container mx-auto py-12 min-h-[650px]'>
                 <div className='bg-section-alternative rounded-lg'>
                     <Filters />
                 </div>
-                <div className='col-span-2 space-y-6'>
+                <div className='col-span-1 xl:col-span-2 space-y-6 px-4 xl:px-0'>
                     {
                         areJobsLoading ? [...Array(4)].map((_, index) => <JobCardSkeleton key={`job-card-skeleton-${index}`} />)
                         : jobs.map((job) => <JobCard key={job.sys.id} job={job} />)

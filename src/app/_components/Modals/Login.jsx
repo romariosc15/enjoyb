@@ -1,44 +1,54 @@
 'use client'
 import { Fragment } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from '@nextui-org/react';
+import { MdLogin } from 'react-icons/md';
 
 export default function LoginModal() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     return (
         <Fragment>
-            <Button onPress={onOpen}>Open Modal</Button>
+            <Button onPress={onOpen} className='bg-button-primary text-white'>
+                <MdLogin size={20} /> Sign in
+            </Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                 {(onClose) => (
                     <>
-                    <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-                    <ModalBody>
-                        <p> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nullam pulvinar risus non risus hendrerit venenatis.
-                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                        </p>
-                        <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nullam pulvinar risus non risus hendrerit venenatis.
-                        Pellentesque sit amet hendrerit risus, sed porttitor quam.
-                        </p>
-                        <p>
-                        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
-                        dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. 
-                        Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. 
-                        Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur 
-                        proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
-                        </p>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="danger" variant="light" onPress={onClose}>
-                        Close
-                        </Button>
-                        <Button color="primary" onPress={onClose}>
-                        Action
-                        </Button>
-                    </ModalFooter>
+                        <ModalHeader className='flex flex-col gap-1 text-title-primary'>Sign in</ModalHeader>
+                        <ModalBody>
+                            <div className='space-y-4 pb-2'>
+                                <div>
+                                    <label htmlFor='email'></label>
+                                    <Input
+                                        classNames={{
+                                            inputWrapper: 'bg-white border',
+                                        }}
+                                        id='email'
+                                        type='email'
+                                        label='Email' 
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor='email'></label>
+                                    <Input
+                                        classNames={{
+                                            inputWrapper: 'bg-white border',
+                                        }}
+                                        id='password'
+                                        type='password'
+                                        label='Password' 
+                                    />
+                                </div>
+                                <div className='flex flex-col justify-center'>
+                                    <Button className='font-medium w-1/3' color='success'>
+                                        Enter
+                                    </Button>
+                                    <Button className='font-medium w-1/3' color='danger'>
+                                        Google
+                                    </Button>
+                                </div>
+                            </div>
+                        </ModalBody>
                     </>
                 )}
                 </ModalContent>
