@@ -15,7 +15,7 @@ export default function QuickSearch(props) {
     ]
     return (
         <Fragment>
-            <div className='w-96'>
+            <div className='w-96 px-4 xl:px-0'>
                 <Input
                     classNames={{
                         inputWrapper: 'bg-white rounded-none'
@@ -30,7 +30,7 @@ export default function QuickSearch(props) {
                     }
                 />
             </div>
-            <div className='w-96'>
+            <div className='w-96 px-4 xl:px-0'>
                 <Select
                     label=''
                     size='lg'
@@ -51,7 +51,7 @@ export default function QuickSearch(props) {
                     ))}
                 </Select>
             </div>
-            <div className='w-96'>
+            <div className='w-96 px-4 xl:px-0'>
                 <Select
                     label=''
                     size='lg'

@@ -17,7 +17,7 @@ export default function Navbar(props) {
         window.addEventListener('scroll', stickNavbar);
         return () => window.removeEventListener('scroll', stickNavbar);
     }, []);
-    const getContainer = () => isSticky ? 'sticky top-0 bg-white shadow-md' : 'container mx-auto'
+    const getContainer = () => isSticky ? 'xl:sticky xl:top-0 bg-white shadow-md' : 'container mx-auto'
     const getStickyNavbar = () => isSticky ? 'container mx-auto' : ''
     const getTitleThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-title-primary'
     const getLinkThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-link-primary'
@@ -28,7 +28,7 @@ export default function Navbar(props) {
     ]
     return (
         <div className={`${getContainer()}`}>
-            <div className={`flex flex-row items-center px-6 xl:px-0 py-4 ${getStickyNavbar()}`}>
+            <div className={`flex flex-row items-center px-4 xl:px-0 py-4 ${getStickyNavbar()}`}>
                 <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
                 <ul className={`hidden xl:block text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
                     {

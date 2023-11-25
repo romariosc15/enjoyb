@@ -17,13 +17,13 @@ export default function FeaturedJobs() {
     }, [])
   return (
     <div className='container mx-auto py-12'>
-      <div className='flex flex-col justify-center items-center'>
-          <h1 className='text-4xl font-bold text-title-primary'>Trabajos destacados</h1>
-          <p className='mt-3 text-description-primary'>
+      <div className='flex flex-col justify-center items-center px-4 xl:px-0'>
+          <h1 className='text-3xl xl:text-4xl font-bold text-title-primary'>Trabajos destacados</h1>
+          <p className='mt-3 text-description-primary text-sm xl:text-base text-center'>
               At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
           </p>
       </div>
-      <div className='mt-8 grid grid-cols-4 gap-5'>
+      <div className='mt-8 grid grid-cols-1 xl:grid-cols-4 gap-5 px-4 xl:px-0'>
         {
           areFeaturedJobsLoading ? [...Array(4)].map((_, index) => <FeaturedJobCardSkeleton key={index} />)
           : featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)

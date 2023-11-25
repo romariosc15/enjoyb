@@ -11,7 +11,7 @@ export default async function JobDetail(props) {
   const job = response;
   return (
     <Fragment>
-      <div className='bg-detail-primary text-white'>
+      <div className='bg-detail-primary text-white px-4 xl:px-0'>
         <div className='container mx-auto py-8'>
           <div className='text-sm space-x-2 mb-8'>
             <Link href='/' className='opacity-75'>
@@ -35,18 +35,18 @@ export default async function JobDetail(props) {
           <p className='text-sm mt-4'>{ job.fields.summary }</p>
         </div>
       </div>
-      <div className='bg-gray-alternative min-h-[600px]'>
-        <div className='container mx-auto py-8 grid grid-cols-3 gap-8'>
-          <div className='bg-white border border-default rounded-md px-4 py-6 col-span-2'>
+      <div className='bg-gray-alternative min-h-[600px] px-4 xl:px-0'>
+        <div className='container mx-auto py-8 grid grid-cols-1 xl:grid-cols-3 gap-8'>
+          <div className='bg-white border border-default rounded-md px-4 py-6 xl:col-span-2'>
             <div className='space-y-2'>
-              <h3 className='text-xl font-bold text-title-primary'>Job description</h3>
-              <div className='space-y-2 text-description-primary'>
+              <h3 className='text-xl xl:text-2xl font-bold text-title-primary'>Job description</h3>
+              <div className='space-y-2 text-description-primary text-sm xl:text-base'>
                 { documentToReactComponents(job.fields.description) }
               </div>
             </div>
           </div>
           <div className='bg-white border border-default rounded-md px-4 py-6 h-fit space-y-3'>
-            <h2 className='text-2xl font-bold text-title-primary'>¿Listo para aplicar?</h2>
+            <h2 className='text-xl xl:text-2xl font-bold text-title-primary'>¿Listo para aplicar?</h2>
             <p className='text-sm text-description-primary'>Primero responde las siguientes preguntas y luego envía tu aplicación a la empresa</p>
             <div className='text-sm text-description-primary'>
               <h5>¿Tienes autorización para trabajar en USA?</h5>
