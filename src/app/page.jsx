@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { AppProvider } from "@/app/_providers/AppContext";
 import ScreenLoader from '@/app/_components/screen-loader'
 import Navbar from '@/app/_components/navbar'
 import Footer from '@/app/_components/footer'

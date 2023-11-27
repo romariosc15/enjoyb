@@ -16,7 +16,7 @@ export default function FeaturedJobs() {
         fetchFeaturedJobs()
     }, [])
   return (
-    <div className='container mx-auto py-12'>
+    <div className='container mx-auto py-16'>
       <div className='flex flex-col justify-center items-center px-4 xl:px-0'>
           <h1 className='text-3xl xl:text-4xl font-bold text-title-primary'>Trabajos destacados</h1>
           <p className='mt-3 text-description-primary text-sm xl:text-base text-center'>

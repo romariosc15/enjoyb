@@ -24,12 +24,14 @@ export default function Navbar(props) {
     const routes = [
         {path: '/', label: 'Home'},
         {path: '/jobs', label: 'Jobs'},
-        {path: '/jobs/search', label: 'Advanced search'}
+        {path: '/about-us', label: 'About us'}
     ]
     return (
-        <div className={`${getContainer()}`}>
+        <div className={`z-10 ${getContainer()}`}>
             <div className={`flex flex-row items-center px-4 xl:px-0 py-4 ${getStickyNavbar()}`}>
-                <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
+                <Link href='/'>
+                    <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
+                </Link>
                 <ul className={`hidden xl:block text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
                     {
                         routes.map((route) => (

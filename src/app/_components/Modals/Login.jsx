@@ -39,12 +39,9 @@ export default function LoginModal() {
                                         label='Password' 
                                     />
                                 </div>
-                                <div className='flex flex-col justify-center'>
-                                    <Button className='font-medium w-1/3' color='success'>
-                                        Enter
-                                    </Button>
-                                    <Button className='font-medium w-1/3' color='danger'>
-                                        Google
+                                <div className='flex flex-col gap-4'>
+                                    <Button className='font-medium w-1/2 mx-auto' color='success'>
+                                        Login
                                     </Button>
                                 </div>
                             </div>

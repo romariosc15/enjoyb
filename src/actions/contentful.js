@@ -45,3 +45,11 @@ export async function getIndustries() {
     
     return response.items;
 }
+
+export async function getReviews() {
+    const response = await contentful.getEntries({
+        content_type: 'reviews',
+    });
+    
+    return response.items;
+}
