@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {Skeleton} from "@nextui-org/skeleton";
 
 export default function FeaturedJobCard(props) {
