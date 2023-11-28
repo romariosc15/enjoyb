@@ -4,6 +4,7 @@ import Navbar from '@/app/_components/navbar'
 import Footer from '@/app/_components/footer'
 import FeaturedJobs from '@/app/_components/featured-jobs'
 import QuickSearch from '@/app/_components/Home/quick-search'
+import WhatYouNeed from '@/app/_components/Home/what-you-need'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         </div>
       </div>
       <FeaturedJobs />
+      <WhatYouNeed />
       <Footer />
     </Suspense>
   )
