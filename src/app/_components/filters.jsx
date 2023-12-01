@@ -59,7 +59,7 @@ export default function Filters() {
                     Clear filters
                 </Button>
             </div>
-            <div className='py-4 px-4 xl:px-6 space-y-4'>
+            <div className='py-6 px-4 xl:px-6 space-y-4'>
                 <div className='space-y-2'>
                     <label className='text-lg font-medium text-label-primary' htmlFor="industry">Industry</label>
                     <Select
