@@ -53,3 +53,9 @@ export async function getReviews() {
     
     return response.items;
 }
+
+export async function getJobDetail(id) {
+    const response = await contentful.getEntry(id);
+    
+    return response;
+}

@@ -19,7 +19,7 @@ module.exports = {
         'link-active': '#1ca774',
         'money-primary': '#FF8B00',
         'label-primary': '#132227',
-        'button-primary': '#24486c'
+        'button-primary': '#24486c',
       },
       backgroundColor: {
         'section-primary': '#016551',

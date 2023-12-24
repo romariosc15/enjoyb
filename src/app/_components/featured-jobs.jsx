@@ -2,19 +2,19 @@
 import { useEffect, useState } from 'react';
 import FeaturedJobCard from '@/app/_components/featured-job-card'
 import FeaturedJobCardSkeleton from '@/app/_components/Skeletons/featured-job-card'
-import { getFeaturedJobs} from '@/actions/contentful'
+import { getFeaturedJobs } from '@/actions/contentful'
 
 export default function FeaturedJobs() {
   const [featuredJobs, setFeaturedJobs] = useState([])
   const [areFeaturedJobsLoading, setAreFeaturedJobsLoading] = useState(true)
-    useEffect(() => {
-        const fetchFeaturedJobs = async () => {
-            const response = await getFeaturedJobs()
-            setFeaturedJobs(response)
-            setAreFeaturedJobsLoading(false)
-        }
-        fetchFeaturedJobs()
-    }, [])
+  useEffect(() => {
+      const fetchFeaturedJobs = async () => {
+          const response = await getFeaturedJobs()
+          setFeaturedJobs(response)
+          setAreFeaturedJobsLoading(false)
+      }
+      fetchFeaturedJobs()
+  }, [])
   return (
     <div className='container mx-auto py-16'>
       <div className='flex flex-col justify-center items-center px-4 xl:px-0'>
