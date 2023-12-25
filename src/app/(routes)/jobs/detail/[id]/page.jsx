@@ -1,8 +1,8 @@
 'use client'
 import { Fragment, useState, useEffect } from 'react'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import ScreenLoader from '@/app/_components/screen-loader'
 import { getJobDetail } from '@/actions/contentful'
+import { renderJobDescription } from '@/app/_libs/contentful-rich-text'
 import Link from 'next/link'
 import {RadioGroup, Radio} from "@nextui-org/radio"
 import { MdLocationOn, MdWorkHistory } from 'react-icons/md'
@@ -29,7 +29,7 @@ export default function JobDetail(props) {
         :
         <Fragment>
           <div className='bg-detail-primary text-white px-4 xl:px-0'>
-            <div className='container mx-auto py-8'>
+            <div className='container mx-auto py-12'>
               <div className='text-sm space-x-2 mb-8'>
                 <Link href='/' className='opacity-75'>
                   Home
@@ -81,7 +81,7 @@ export default function JobDetail(props) {
                 <CardBody className='space-y-2'>
                   <h3 className='text-xl xl:text-2xl font-bold text-title-primary'>Job description</h3>
                   <div className='space-y-2 text-description-primary text-sm xl:text-base'>
-                    { documentToReactComponents(job.fields.description) }
+                    { renderJobDescription(job.fields.description) }
                   </div>
                 </CardBody>
               </Card>

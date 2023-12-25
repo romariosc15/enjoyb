@@ -23,7 +23,7 @@ export default function JobCard(props) {
                     }
                     <div className='xl:ml-4 col-span-4 flex flex-col'>
                         <span className='text-xs w-fit font-medium bg-green-100 text-green-700 py-1 px-3 rounded-md'>{ props.job.fields.jobType.fields.name }</span>
-                        <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary text-lg font-bold mt-1'>
+                        <Link href={`/jobs/detail/${props.job.sys.id}`} className='text-link-primary text-lg font-bold mt-1 hover:text-link-active transition-colors'>
                             { props.job.fields.title }
                         </Link>
                         <div className='space-x-4 font-medium'>
@@ -34,7 +34,7 @@ export default function JobCard(props) {
                     </div>
                     <div className='mx-auto hidden xl:flex xl:flex-row xl:items-center xl:gap-2'>
                         <div className='rounded-full flex flex-row bg-icon-primary items-center p-1.5'>
-                            <FaMoneyBillWave className='inline-block align-sub text-white' size={20} />
+                            <FaMoneyBillWave className='inline-block align-sub text-white' size={18} />
                         </div>
                         <span className='text-title-primary font-extrabold text-xl'>
                             {`$${props.job.fields.minimumSalary}/yr - $${props.job.fields.maximumSalary}/yr`}

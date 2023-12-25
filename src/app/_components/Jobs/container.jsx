@@ -19,7 +19,6 @@ export default function JobsContainer() {
     useEffect(() => {
         const fetchJobs = async () => {
             const response = await getJobs(filters)
-            console.log(response)
             setJobs(response)
             setAreJobsLoading(false)
         }
