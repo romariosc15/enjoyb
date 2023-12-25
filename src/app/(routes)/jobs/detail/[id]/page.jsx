@@ -75,7 +75,7 @@ export default function JobDetail(props) {
               </div>
             </div>
           </div>
-          <div className='bg-gray-alternative min-h-[600px] px-4 xl:px-0'>
+          <div className='bg-gray-alternative xl:min-h-[500px] px-4 xl:px-0'>
             <div className='container mx-auto py-12 grid grid-cols-1 xl:grid-cols-3 gap-8'>
               <Card className='px-2 py-2 xl:col-span-2'>
                 <CardBody className='space-y-2'>

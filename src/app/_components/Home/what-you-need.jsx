@@ -1,7 +1,5 @@
 'use client'
 import { Fragment } from 'react'
-import { MdSearch, MdWorkOutline, MdLocationOn } from 'react-icons/md';
-import {Select, SelectItem} from '@nextui-org/select';
 import {Card, CardBody} from "@nextui-org/card";
 
 export default function WhatYouNeed() {

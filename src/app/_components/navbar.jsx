@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import Link from 'next/link'
 import LoginModal from '@/app/_components/Modals/Login'
 
@@ -17,7 +17,7 @@ export default function Navbar(props) {
         window.addEventListener('scroll', stickNavbar);
         return () => window.removeEventListener('scroll', stickNavbar);
     }, []);
-    const getContainer = () => isSticky ? 'xl:sticky xl:top-0 bg-white shadow-md' : 'container mx-auto'
+    const getContainer = () => isSticky ? 'xl:fixed xl:top-0 bg-white shadow-md w-full' : 'container mx-auto'
     const getStickyNavbar = () => isSticky ? 'container mx-auto' : ''
     const getTitleThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-title-primary'
     const getLinkThemeColor = () => props.theme === 'home' && !isSticky ? 'text-white' : 'text-link-primary'
@@ -27,26 +27,29 @@ export default function Navbar(props) {
         {path: '/about-us', label: 'About us'}
     ]
     return (
-        <div className={`z-10 ${getContainer()}`}>
-            <div className={`flex flex-row items-center px-4 xl:px-0 py-4 ${getStickyNavbar()}`}>
-                <Link href='/'>
-                    <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
-                </Link>
-                <ul className={`hidden xl:block text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
-                    {
-                        routes.map((route) => (
-                            <li key={route.path} className='transition-colors inline-block hover:text-link-active'>
-                                <Link href={route.path}>
-                                    {route.label}
-                                </Link>
-                            </li>
-                        ))
-                    }
-                </ul>
-                <div className='ml-auto'>
-                    <LoginModal /> 
+        <Fragment>
+            {   isSticky ? <div className='h-[72px]'></div> : '' }
+            <div className={`z-10 ${getContainer()}`}>
+                <div className={`flex flex-row items-center px-4 xl:px-0 py-4 ${getStickyNavbar()}`}>
+                    <Link href='/'>
+                        <h1 className={`text-2xl font-bold mr-8 ${getTitleThemeColor()}`}>ENJOYB</h1>
+                    </Link>
+                    <ul className={`hidden xl:block text-sm font-semibold space-x-6 ${getLinkThemeColor()}`}>
+                        {
+                            routes.map((route) => (
+                                <li key={route.path} className='transition-colors inline-block hover:text-link-active'>
+                                    <Link href={route.path}>
+                                        {route.label}
+                                    </Link>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <div className='ml-auto'>
+                        <LoginModal /> 
+                    </div>
                 </div>
             </div>
-        </div>
+        </Fragment>
     )
 }

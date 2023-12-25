@@ -33,10 +33,10 @@ export default function JobCard(props) {
                         </div>
                     </div>
                     <div className='mx-auto hidden xl:flex xl:flex-row xl:items-center xl:gap-2'>
-                        <div className='rounded-full flex flex-row bg-icon-primary items-center p-1.5'>
-                            <FaMoneyBillWave className='inline-block align-sub text-white' size={18} />
+                        <div className='rounded-full flex flex-row bg-icon-primary items-center p-[0.3125rem]'>
+                            <FaMoneyBillWave className='inline-block align-sub text-white' size={14} />
                         </div>
-                        <span className='text-title-primary font-extrabold text-xl'>
+                        <span className='text-title-primary font-black text-xl'>
                             {`$${props.job.fields.minimumSalary}/yr - $${props.job.fields.maximumSalary}/yr`}
                         </span>
                     </div>
