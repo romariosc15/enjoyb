@@ -2,9 +2,10 @@
 import { Fragment } from 'react'
 import { MdSearch, MdWorkOutline, MdLocationOn } from 'react-icons/md';
 import {Select, SelectItem} from '@nextui-org/select';
-import {Input} from "@nextui-org/input";
+import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/button";
 
-export default function QuickSearch(props) {
+export default function QuickSearch() {
     const industries = [
         {label: 'Software development', value: 'software'},
         {label: 'Healthcare', value: 'healthcare'},
@@ -15,10 +16,10 @@ export default function QuickSearch(props) {
     ]
     return (
         <Fragment>
-            <div className='w-96 px-4 xl:px-0'>
+            <div className='w-80 px-4 xl:px-0'>
                 <Input
                     classNames={{
-                        inputWrapper: 'bg-white rounded-none'
+                        inputWrapper: 'bg-white rounded-r-none'
                     }}
                     size='lg'
                     type='text'
@@ -30,7 +31,7 @@ export default function QuickSearch(props) {
                     }
                 />
             </div>
-            <div className='w-96 px-4 xl:px-0'>
+            <div className='w-64 px-4 xl:px-0'>
                 <Select
                     label=''
                     size='lg'
@@ -51,7 +52,7 @@ export default function QuickSearch(props) {
                     ))}
                 </Select>
             </div>
-            <div className='w-96 px-4 xl:px-0'>
+            <div className='w-64 px-4 xl:px-0'>
                 <Select
                     label=''
                     size='lg'
@@ -71,6 +72,11 @@ export default function QuickSearch(props) {
                         </SelectItem>
                     ))}
                 </Select>
+            </div>
+            <div>
+                <Button size='lg' className='bg-button-primary text-white p-2 rounded-l-none box-content font-medium'>
+                    Search
+                </Button>
             </div>
         </Fragment>
     )

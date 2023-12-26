@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState, Fragment } from 'react';
 import Link from 'next/link'
-import LoginModal from '@/app/_components/Modals/Login'
 
 export default function Navbar(props) {
     const [isSticky, setIsSticky] = useState(false);
@@ -45,9 +44,6 @@ export default function Navbar(props) {
                             ))
                         }
                     </ul>
-                    <div className='ml-auto'>
-                        <LoginModal /> 
-                    </div>
                 </div>
             </div>
         </Fragment>

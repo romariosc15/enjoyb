@@ -1,15 +1,13 @@
 'use client'
-import { Fragment } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from '@nextui-org/react';
-import { MdLogin } from 'react-icons/md';
+import { Fragment, useContext } from 'react'
+import {Modal, ModalContent, ModalHeader, ModalBody, Button, Input} from '@nextui-org/react';
+import { AppContext } from "@/app/_providers/AppContext";
 
-export default function LoginModal() {
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+export default function QuickApply() {
+    const { isOpen, onOpenChange } = useContext(AppContext)
+
     return (
         <Fragment>
-            <Button onPress={onOpen} className='bg-button-primary text-white'>
-                <MdLogin size={20} /> Sign in
-            </Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                 {(onClose) => (

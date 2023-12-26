@@ -1,10 +1,13 @@
+import { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { MdOutlineWatchLater, MdCalendarMonth, MdLocationOn, MdOutlineBrokenImage } from 'react-icons/md';
-import {Button} from "@nextui-org/button";
-import {Card, CardBody} from "@nextui-org/card";
+import { MdOutlineWatchLater, MdCalendarMonth, MdLocationOn, MdOutlineBrokenImage } from 'react-icons/md'
+import {Button} from "@nextui-org/button"
+import {Card, CardBody} from "@nextui-org/card"
+import { AppContext } from "@/app/_providers/AppContext"
 
 export default function FeaturedJobCard(props) {
+  const { onOpen } = useContext(AppContext)
   return (
     <Card className='px-2 py-4'>
       <CardBody>
@@ -37,7 +40,7 @@ export default function FeaturedJobCard(props) {
             <span className='text-title-primary font-extrabold text-lg'>
                 {`$${props.job.fields.minimumSalary} - $${props.job.fields.maximumSalary}`}
             </span>
-            <Button className='bg-button-primary text-white'>
+            <Button onPress={onOpen} className='bg-button-primary text-white'>
               Aplicación rápida
             </Button>
         </div>

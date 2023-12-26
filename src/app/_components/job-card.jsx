@@ -1,11 +1,14 @@
+import { useContext } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { MdLocationOn, MdOutlineBrokenImage } from 'react-icons/md';
-import { FaMoneyBillWave } from "react-icons/fa6";
-import {Button} from "@nextui-org/button";
-import {Card, CardBody} from "@nextui-org/card";
+import { MdLocationOn, MdOutlineBrokenImage } from 'react-icons/md'
+import { FaMoneyBillWave } from "react-icons/fa6"
+import {Button} from "@nextui-org/button"
+import {Card, CardBody} from "@nextui-org/card"
+import { AppContext } from "@/app/_providers/AppContext";
 
 export default function JobCard(props) {
+    const { onOpen } = useContext(AppContext)
     return (
         <Card className='px-2 py-1'>
             <CardBody>
@@ -44,7 +47,7 @@ export default function JobCard(props) {
                         <Button href={`/jobs/detail/${props.job.sys.id}`} as={Link} className='bg-gray-alternative text-button-primary'>
                             Ver detalle
                         </Button>
-                        <Button className='bg-button-primary text-white'>
+                        <Button onPress={onOpen} className='bg-button-primary text-white'>
                             Aplicación rápida
                         </Button>
                     </div>
