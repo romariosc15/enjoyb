@@ -1,10 +1,11 @@
 'use client'
 import { Fragment, useContext } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, Button, Input} from '@nextui-org/react';
+import {Modal, ModalContent, ModalHeader, ModalBody, Button, ModalFooter, Link} from '@nextui-org/react';
 import { AppContext } from "@/app/_providers/AppContext";
+import { renderJobDescription } from '@/app/_libs/contentful-rich-text'
 
 export default function QuickApply() {
-    const { isOpen, onOpenChange } = useContext(AppContext)
+    const { isOpen, onOpenChange, quickApplyJobDetail } = useContext(AppContext)
 
     return (
         <Fragment>
@@ -12,38 +13,39 @@ export default function QuickApply() {
                 <ModalContent>
                 {(onClose) => (
                     <>
-                        <ModalHeader className='flex flex-col gap-1 text-title-primary'>Sign in</ModalHeader>
+                        <ModalHeader className='flex flex-col gap-1 text-title-primary font-black'>Aplicación rápida</ModalHeader>
                         <ModalBody>
                             <div className='space-y-4 pb-2'>
                                 <div>
-                                    <label htmlFor='email'></label>
-                                    <Input
-                                        classNames={{
-                                            inputWrapper: 'bg-white border',
-                                        }}
-                                        id='email'
-                                        type='email'
-                                        label='Email' 
-                                    />
+                                    <h5 className='text-title-primary text-lg font-bold'>Rol</h5>
+                                    <p>{quickApplyJobDetail.fields.title}</p>
                                 </div>
                                 <div>
-                                    <label htmlFor='email'></label>
-                                    <Input
-                                        classNames={{
-                                            inputWrapper: 'bg-white border',
-                                        }}
-                                        id='password'
-                                        type='password'
-                                        label='Password' 
-                                    />
+                                    <h5 className='text-title-primary text-lg font-bold'>Compañía</h5>
+                                    <p>{quickApplyJobDetail.fields.company}</p>
                                 </div>
-                                <div className='flex flex-col gap-4'>
-                                    <Button className='font-medium w-1/2 mx-auto' color='success'>
-                                        Login
-                                    </Button>
+                                <div>
+                                    <h5 className='text-title-primary text-lg font-bold'>Rango salarial</h5>
+                                    <p>
+                                        {`$${quickApplyJobDetail.fields.minimumSalary} - $${quickApplyJobDetail.fields.maximumSalary}`}
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 className='text-title-primary text-lg font-bold'>Descripción</h5>
+                                    <div className='space-y-2 text-sm xl:text-base'>
+                                        { renderJobDescription(quickApplyJobDetail.fields.description) }
+                                    </div>
                                 </div>
                             </div>
                         </ModalBody>
+                        <ModalFooter>
+                            <Button onPress={onClose} color='danger'>
+                                Cerrar
+                            </Button>
+                            <Button href={`mailto:${quickApplyJobDetail.fields.email}?Subject=${quickApplyJobDetail.fields.title}%20-%20Enjoyb&Body=Is%20authorized%20to%20work%20in%20USA?%20Yes`} as={Link} className='bg-button-primary text-white font-medium'>
+                                Enviar aplicación
+                            </Button>
+                        </ModalFooter>
                     </>
                 )}
                 </ModalContent>

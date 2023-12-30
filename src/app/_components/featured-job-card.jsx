@@ -7,7 +7,7 @@ import {Card, CardBody} from "@nextui-org/card"
 import { AppContext } from "@/app/_providers/AppContext"
 
 export default function FeaturedJobCard(props) {
-  const { onOpen } = useContext(AppContext)
+  const { openQuickApplyModal } = useContext(AppContext)
   return (
     <Card className='px-2 py-4'>
       <CardBody>
@@ -40,7 +40,7 @@ export default function FeaturedJobCard(props) {
             <span className='text-title-primary font-extrabold text-lg'>
                 {`$${props.job.fields.minimumSalary} - $${props.job.fields.maximumSalary}`}
             </span>
-            <Button onPress={onOpen} className='bg-button-primary text-white'>
+            <Button onPress={() => openQuickApplyModal(props.job)} className='bg-button-primary text-white'>
               Aplicación rápida
             </Button>
         </div>

@@ -8,7 +8,7 @@ import {Card, CardBody} from "@nextui-org/card"
 import { AppContext } from "@/app/_providers/AppContext";
 
 export default function JobCard(props) {
-    const { onOpen } = useContext(AppContext)
+    const { openQuickApplyModal } = useContext(AppContext)
     return (
         <Card className='px-2 py-1'>
             <CardBody>
@@ -47,7 +47,7 @@ export default function JobCard(props) {
                         <Button href={`/jobs/detail/${props.job.sys.id}`} as={Link} className='bg-gray-alternative text-button-primary'>
                             Ver detalle
                         </Button>
-                        <Button onPress={onOpen} className='bg-button-primary text-white'>
+                        <Button onPress={() => openQuickApplyModal(props.job)} className='bg-button-primary text-white'>
                             Aplicación rápida
                         </Button>
                     </div>
