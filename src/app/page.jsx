@@ -16,7 +16,7 @@ export default function Home() {
             Encuentra oportunidades emocionantes<br />
             & totalmente remotas
           </h1>
-          <div className='mt-8 flex flex-col xl:flex-row items-center gap-4 xl:gap-0'>
+          <div className='mt-10 flex flex-col xl:flex-row items-center gap-4 xl:gap-0'>
             <QuickSearch />
           </div>
         </div>

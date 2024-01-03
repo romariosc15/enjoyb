@@ -109,7 +109,7 @@ export default function JobDetail(props) {
                     </div>
                   </div>
                   <div className='text-center'>
-                    <Button href={`mailto:${job.fields.email}?Subject=${job.fields.title}%20-%20Enjoyb&Body=Is%20authorized%20to%20work%20in%20USA?%20${isAuthorizedToWork.toUpperCase()}`} as={Link} className='bg-button-primary text-white font-medium' isDisabled={isAuthorizedToWork === ''}>
+                    <Button href={`mailto:${job.fields.email}?subject=${job.fields.title}%20-%20Enjoyb&body=Is%20authorized%20to%20work%20in%20USA?%20${isAuthorizedToWork.toUpperCase()}`} as={Link} className='bg-button-primary text-white font-medium' isDisabled={isAuthorizedToWork === ''}>
                       Enviar aplicación
                     </Button>
                   </div>

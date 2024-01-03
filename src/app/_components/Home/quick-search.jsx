@@ -1,23 +1,77 @@
 'use client'
-import { Fragment } from 'react'
+import { useRouter } from 'next/navigation'
+import { Fragment, useContext, useState, useEffect } from 'react'
 import { MdSearch, MdWorkOutline, MdLocationOn } from 'react-icons/md';
 import {Select, SelectItem} from '@nextui-org/select';
+import { getIndustries, getJobTypes} from '@/actions/contentful'
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { AppContext } from "@/app/_providers/AppContext";
 
 export default function QuickSearch() {
-    const industries = [
-        {label: 'Software development', value: 'software'},
-        {label: 'Healthcare', value: 'healthcare'},
-    ]
-    const locations = [
-        {label: 'Tacna', value: 'tacna'},
-        {label: 'Moquegua', value: 'moquegua'},
-    ]
+    const [industries, setIndustries] = useState([])
+    const [areIndustriesLoading, setAreIndustriesLoading] = useState(true)
+    const [industrySelect, setIndustrySelect] = useState(new Set([]))
+    const [isValidIndustrySelect, setIsValidIndustrySelect] = useState(true)
+
+    const [jobTypes, setJobTypes] = useState([])
+    const [areJobTypesLoading, setAreJobTypesLoading] = useState(true)
+    const [jobTypesSelect, setJobTypesSelect] = useState(new Set([]))
+    const [isValidJobTypesSelect, setIsValidJobTypesSelect] = useState(true)
+
+    const { setFilters } = useContext(AppContext)
+
+    const router = useRouter()
+    useEffect(() => {
+        const fetchIndustries = async () => {
+            const response = await getIndustries()
+            setIndustries(response)
+            setAreIndustriesLoading(false)
+        }
+        const fetchJobTypes = async () => {
+            const response = await getJobTypes()
+            setJobTypes(response)
+            setAreJobTypesLoading(false)
+        }
+        fetchIndustries()
+        fetchJobTypes()
+    }, [])
+    useEffect(() => {
+        setFilters({
+            industry: industrySelect,
+            jobType: jobTypesSelect,
+        })
+    }, [industrySelect, jobTypesSelect, setFilters])
+
+    const checkInputErrors = () => {
+        let hasErrors = false
+        if(industrySelect.size > 0) setIsValidIndustrySelect(true)
+        else {
+            setIsValidIndustrySelect(false)
+            hasErrors = true
+        }
+        if(jobTypesSelect.size > 0) setIsValidJobTypesSelect(true)
+        else {
+            setIsValidJobTypesSelect(false)
+            hasErrors = true
+        }
+        return hasErrors
+    }
+
+    const search = () => {
+        const existsErrors = checkInputErrors()
+        if(!existsErrors) {
+            let parameters = ''
+            if(industrySelect.size > 0) parameters += `?industry=${industrySelect.values().next().value}`
+            if(jobTypesSelect.size > 0) parameters += `&job-type=${jobTypesSelect.values().next().value}`
+            router.push(`/jobs${parameters}`)
+        }   
+    }
     return (
         <Fragment>
             <div className='w-80 px-4 xl:px-0'>
                 <Input
+                    className={`${!isValidIndustrySelect || !isValidJobTypesSelect ? 'mb-6' : ''}`}
                     classNames={{
                         inputWrapper: 'bg-white rounded-r-none'
                     }}
@@ -37,17 +91,22 @@ export default function QuickSearch() {
                     size='lg'
                     placeholder='Select an industry'
                     aria-label='Select an industry'
-                    className=''
+                    className={`${isValidIndustrySelect && !isValidJobTypesSelect ? 'mb-6' : ''}`}
                     classNames={{
                         trigger: 'bg-white rounded-none border-x',
                     }}
                     startContent={
                         <MdWorkOutline size={20} className='mr-1' />
                     }
+                    onSelectionChange={(value) => setIndustrySelect(value)}
+                    selectionMode='single'
+                    isDisabled={areIndustriesLoading}
+                    errorMessage={isValidIndustrySelect ? '' : 'You must select one item'}
+                    isInvalid={!isValidIndustrySelect}
                 >
                     {industries.map((industry) => (
-                        <SelectItem key={industry.value} value={industry.value}>
-                            {industry.label}
+                        <SelectItem key={industry.fields.key} value={industry.fields.key}>
+                            {industry.fields.name}
                         </SelectItem>
                     ))}
                 </Select>
@@ -56,25 +115,29 @@ export default function QuickSearch() {
                 <Select
                     label=''
                     size='lg'
-                    placeholder='Select a location'
-                    aria-label='Select a location'
-                    className=''
+                    placeholder='Select a job type'
+                    aria-label='Select a job type'
+                    className={`${!isValidIndustrySelect && isValidJobTypesSelect ? 'mb-6' : ''}`}
                     classNames={{
                         trigger: 'bg-white rounded-none',
                     }}
                     startContent={
                         <MdLocationOn size={20} className='mr-1' />
                     }
+                    onSelectionChange={(value) => setJobTypesSelect(value)}
+                    isDisabled={areJobTypesLoading}
+                    errorMessage={isValidJobTypesSelect ? '' : 'You must select one item'}
+                    isInvalid={!isValidJobTypesSelect}
                 >
-                    {locations.map((location) => (
-                        <SelectItem key={location.value} value={location.value}>
-                            {location.label}
+                    {jobTypes.map((jobType) => (
+                        <SelectItem key={jobType.fields.key} value={jobType.fields.key}>
+                            {jobType.fields.name}
                         </SelectItem>
                     ))}
                 </Select>
             </div>
             <div>
-                <Button size='lg' className='bg-button-primary text-white p-2 rounded-l-none box-content font-medium'>
+                <Button onPress={search} size='lg' className={`bg-button-primary text-white p-2 rounded-l-none box-content font-medium ${!isValidIndustrySelect || !isValidJobTypesSelect ? 'mb-6' : ''}`}>
                     Search
                 </Button>
             </div>

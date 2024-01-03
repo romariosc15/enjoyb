@@ -7,6 +7,7 @@ import {Button} from "@nextui-org/button";
 import { AppContext } from "@/app/_providers/AppContext";
 import { getJobTypes, getIndustries} from '@/actions/contentful'
 import CheckboxGroupSkeleton from '@/app/_components/Skeletons/checkbox-group'
+import { useSearchParams } from 'next/navigation'
 
 export default function Filters() {
     const [industries, setIndustries] = useState([])
@@ -18,15 +19,21 @@ export default function Filters() {
     const [industrySelect, setIndustrySelect] = useState(new Set([]))
     const [jobTypesCheckboxes, setJobTypesCheckboxes] = useState([])
 
+    const searchParams = useSearchParams()
+    const industryQuery = searchParams.get('industry')
+    const jobTypeQuery = searchParams.get('job-type')
+    
     useEffect(() => {
         const fetchIndustries = async () => {
             const response = await getIndustries()
             setIndustries(response)
+            if(industryQuery) setIndustrySelect([industryQuery])
             setAreIndustriesLoading(false)
         }
         const fetchJobTypes = async () => {
             const response = await getJobTypes()
             setJobTypes(response)
+            if(jobTypeQuery) setJobTypesCheckboxes([jobTypeQuery])
             setAreJobTypesLoading(false)
         }
         fetchIndustries()

@@ -39,10 +39,10 @@ export default function QuickApply() {
                             </div>
                         </ModalBody>
                         <ModalFooter>
-                            <Button onPress={onClose} color='danger'>
+                            <Button onPress={onClose} color='danger' className='font-medium'>
                                 Cerrar
                             </Button>
-                            <Button href={`mailto:${quickApplyJobDetail.fields.email}?Subject=${quickApplyJobDetail.fields.title}%20-%20Enjoyb&Body=Is%20authorized%20to%20work%20in%20USA?%20Yes`} as={Link} className='bg-button-primary text-white font-medium'>
+                            <Button href={`mailto:${quickApplyJobDetail.fields.email}?subject=${quickApplyJobDetail.fields.title}%20-%20Enjoyb&body=Is%20authorized%20to%20work%20in%20USA?%20Yes`} as={Link} className='bg-button-primary text-white font-medium'>
                                 Enviar aplicación
                             </Button>
                         </ModalFooter>
