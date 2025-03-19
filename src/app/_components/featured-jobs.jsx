@@ -23,7 +23,7 @@ export default function FeaturedJobs() {
               At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
           </p>
       </div>
-      <div className='mt-8 grid grid-cols-1 xl:grid-cols-4 gap-5 px-4 xl:px-0'>
+      <div className='mt-8 grid grid-cols-1 xl:grid-cols-3 gap-8 px-4 xl:px-0'>
         {
           areFeaturedJobsLoading ? [...Array(4)].map((_, index) => <FeaturedJobCardSkeleton key={index} />)
           : featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)
