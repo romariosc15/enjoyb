@@ -25,7 +25,7 @@ export default function FeaturedJobs() {
       </div>
       <div className='mt-8 grid grid-cols-1 xl:grid-cols-3 gap-8 px-4 xl:px-0'>
         {
-          areFeaturedJobsLoading ? [...Array(4)].map((_, index) => <FeaturedJobCardSkeleton key={index} />)
+          areFeaturedJobsLoading ? [...Array(3)].map((_, index) => <FeaturedJobCardSkeleton key={index} />)
           : featuredJobs.map((job) => <FeaturedJobCard key={job.sys.id} job={job} />)
         }
       </div>
